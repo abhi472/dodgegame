@@ -16,7 +16,7 @@ function Update(){
   translation *= Time.deltaTime;
   rotation *= Time.deltaTime;
 
-  transform.Translate (translation, 0, 0);
+  transform.Translate (0, translation, 0);
   transform.Rotate (0, 0, -rotation);
 
   rb.position = new Vector3

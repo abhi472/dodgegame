@@ -4,8 +4,12 @@ var shot : GameObject;
 var shotSpawn : Transform;
 var fireRate : float;
 var nextFire : float;
+var player : Transform;
 function Update () {
-  if(Input.GetButton("Fire1") && Time.time > nextFire)
+  var dir: Vector3 = player.position - transform.position;
+  var angle: float = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
+  transform.rotation = Quaternion.AngleAxis(angle-90, Vector3.forward);
+  if(Random && Time.time > nextFire)
   {
     nextFire = Time.time + fireRate;
     Instantiate (shot, shotSpawn.position, shotSpawn.rotation);

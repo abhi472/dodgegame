@@ -1,6 +1,11 @@
 ﻿#pragma strict
-var speed : float;
+var delay = 10.0;
 
-function Start () {
-  GetComponent.<Rigidbody2D>().velocity = transform.up * speed;
+function Update () {
+  SeekAndDestroy();
+}
+
+function SeekAndDestroy(){
+  yield WaitForSeconds(delay);
+  Destroy (gameObject);
 }
