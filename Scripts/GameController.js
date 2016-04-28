@@ -8,8 +8,7 @@ var startWait: float;
 var waveWait: float;
 var scoreText: UnityEngine.UI.Text;
 var score: int;
-var spacevar: Transform;
-var playerDestroyScript: PlayerDestroybyContact = spacevar.GetComponent(PlayerDestroybyContact);
+private var playerDestroyScript : PlayerDestroybyContact;
 var gameOverText: UnityEngine.UI.Text;
 var finalScoreText: UnityEngine.UI.Text;
 var restartText: UnityEngine.UI.Text;
@@ -17,6 +16,15 @@ var gameover: boolean;
 var restart: boolean;
 var finalScore: int;
 function Start () {
+  var playerDestroyObject : GameObject = GameObject.FindWithTag ("Player");
+  if (playerDestroyObject != null)
+  {
+      playerDestroyScript = playerDestroyObject.GetComponent (PlayerDestroybyContact);
+  }
+  if (playerDestroyScript == null)
+  {
+      Debug.Log ("Cannot find 'PlayerDestroybyContact' script");
+  }
   SpawnWaves();
   gameover=false;
   restart=false;
@@ -24,12 +32,14 @@ function Start () {
   finalScoreText.text = "";
   restartText.text = "";
   if(!playerDestroyScript.playerdead){
-    Debug.Log('Alive');
     InvokeRepeating('updateScore', 1.0, 1.0);
   }
 }
 function Update(){
-  // Debug.Log(playerDestroyScript.playerdead);
+  if(playerDestroyScript.playerdead){
+    CancelInvoke('updateScore');
+  }
+  Debug.Log(playerDestroyScript.playerdead);
   if(restart){
     if(Input.GetKeyDown (KeyCode.R)){
       Application.LoadLevel(Application.loadedLevel);
