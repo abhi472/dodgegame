@@ -2,10 +2,11 @@
 var enemy: GameObject;
 var player: GameObject;
 var spawnValues: Vector3;
-var enemyCount: int;
-var spawnWait: float;
-var startWait: float;
-var waveWait: float;
+var enemyCount: int = 3;
+var spawnWait: float = 4;
+var startWait: float = 2;
+var waveWait: float = 10;
+var waveCount: int = 0;
 var scoreText: UnityEngine.UI.Text;
 var score: int;
 private var playerDestroyScript : PlayerDestroybyContact;
@@ -49,6 +50,20 @@ function SpawnWaves(){
   yield WaitForSeconds(startWait);
   while(true)
   {
+    if(waveCount>2){
+      enemyCount=5;
+      spawnWait=3;
+      waveWait=9;
+    }else if(waveCount>5){
+      enemyCount= 10;
+      spawnWait=2;
+      waveWait=5;
+    }else if(waveCount>10){
+      enemyCount= 20;
+      waveWait=2;
+    }else if(waveCount>15){
+      enemyCount= 30;
+    }
     for(var i=0; i<enemyCount;i++)
     {
       var spawnPosition = Vector3(Random.Range(-spawnValues.x,spawnValues.x),Random.Range(-spawnValues.y,spawnValues.y),spawnValues.z);
@@ -57,7 +72,8 @@ function SpawnWaves(){
       yield WaitForSeconds(spawnWait);
     }
     yield WaitForSeconds(waveWait);
-
+    ++waveCount;
+    Debug.Log(waveCount);
     if(gameover){
       restartText.text="Press R for Restart";
       restart=true;
