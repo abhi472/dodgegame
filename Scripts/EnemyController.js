@@ -4,7 +4,11 @@ var shot : GameObject;
 var shotSpawn : Transform;
 var fireRate : float;
 var nextFire : float;
-var player : Transform;
+private var player: Transform;
+function Awake(){
+var playerObject : GameObject = GameObject.FindWithTag ("Player");
+player = playerObject.GetComponent(Transform);
+}
 function Update () {
   var dir: Vector3 = player.position - transform.position;
   var angle: float = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;

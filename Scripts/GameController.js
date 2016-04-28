@@ -39,7 +39,6 @@ function Update(){
   if(playerDestroyScript.playerdead){
     CancelInvoke('updateScore');
   }
-  Debug.Log(playerDestroyScript.playerdead);
   if(restart){
     if(Input.GetKeyDown (KeyCode.R)){
       Application.LoadLevel(Application.loadedLevel);
