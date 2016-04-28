@@ -6,11 +6,20 @@ var enemyCount: int;
 var spawnWait: float;
 var startWait: float;
 var waveWait: float;
+var scoreText: UnityEngine.UI.Text;
+var score: int;
+var spacevar: Transform;
+var playerDestroyScript: PlayerDestroybyContact = spacevar.GetComponent(PlayerDestroybyContact);
 function Start () {
-  SpawnPlayer();
   SpawnWaves();
+  if(!playerDestroyScript.playerdead){
+    Debug.Log('Alive');
+    InvokeRepeating('updateScore', 1.0, 1.0);
+  }
 }
-
+function Update(){
+  Debug.Log(playerDestroyScript.playerdead);
+}
 function SpawnWaves(){
   yield WaitForSeconds(startWait);
   while(true)
@@ -26,8 +35,7 @@ function SpawnWaves(){
   }
 }
 
-function SpawnPlayer(){
-  var playerPosition = Vector3(0,0,0);
-  var playerRotation: Quaternion;
-  Instantiate(player, playerPosition, playerRotation);
+function updateScore(){
+  score += 10;
+  scoreText.text = "Score: " + score;
 }
