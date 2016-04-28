@@ -4,6 +4,21 @@ var playerdead: boolean;
 var playerhealth: int=100;
 var playerhealthslider: UnityEngine.UI.Slider;
 var playerhealthcent: UnityEngine.UI.Text;
+private var gameController : GameController;
+
+function Start ()
+{
+    var gameControllerObject : GameObject = GameObject.FindWithTag ("GameController");
+    if (gameControllerObject != null)
+    {
+        gameController = gameControllerObject.GetComponent (GameController);
+    }
+    if (gameController == null)
+    {
+        Debug.Log ("Cannot find 'GameController' script");
+    }
+}
+
 playerhealthslider.value = playerhealth;
 playerhealthcent.text = playerhealth + '%';
 function OnTriggerEnter2D (other : Collider2D) {
@@ -17,6 +32,7 @@ function OnTriggerEnter2D (other : Collider2D) {
     		Destroy(other.gameObject);
         Destroy(gameObject);
         playerdead=true;
+        gameController.GameOver();
       }
     }
 	}
