@@ -236,8 +236,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72c8b6c2d13e114b80eb65131c45d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minX: 0
+  maxX: 0
+  minY: 0
+  maxY: 0
   moveForce: 5
   boostMultiplier: 2
+  speed: 10
+  rotationSpeed: 10
 --- !u!114 &716610958 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11473052, guid: 908957bc1cb85884491671ff751d0e4b,
@@ -387,7 +393,7 @@ Transform:
   m_GameObject: {fileID: 996972541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -708,23 +714,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22453740, guid: 908957bc1cb85884491671ff751d0e4b, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22453740, guid: 908957bc1cb85884491671ff751d0e4b, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22491426, guid: 908957bc1cb85884491671ff751d0e4b, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22491426, guid: 908957bc1cb85884491671ff751d0e4b, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22491426, guid: 908957bc1cb85884491671ff751d0e4b, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11473052, guid: 908957bc1cb85884491671ff751d0e4b, type: 2}
       propertyPath: m_Text

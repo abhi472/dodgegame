@@ -76,6 +76,8 @@ function SpawnWaves(){
     Debug.Log(waveCount);
     if(gameover){
       restartText.text="Press R for Restart";
+	  restart=true;
+	  if (Input.touchCount > 0)
       restart=true;
       break;
     }
